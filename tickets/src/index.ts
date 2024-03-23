@@ -3,6 +3,7 @@ import "express-async-errors";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session"; 
 import {errorHandler,NotFoundError} from "@ayush-tickets/common";
+import { createTicketRouter } from "./routes/new";
 
 
 const app = express();
@@ -13,6 +14,8 @@ app.use(cookieSession({
     signed:false,
     secure:true
 }))
+
+app.use(createTicketRouter);
 
 app.all('*',async()=>{
     throw new NotFoundError();
