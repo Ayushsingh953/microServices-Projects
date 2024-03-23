@@ -2,13 +2,12 @@ import express from "express";
 import "express-async-errors";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session"; 
+import {errorHandler,NotFoundError} from "@ayush-tickets/common";
 
 import { currentUserRouter } from "./routes/currentUser";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
-import { errorHandler } from "./middlewares/errorHandler";
-import { NotFoundError } from "./errors/notFoundError";
 
 const app = express();
 
