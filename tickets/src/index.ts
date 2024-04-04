@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session"; 
-import {errorHandler,NotFoundError} from "@ayush-tickets/common";
+import {errorHandler,NotFoundError,currentUser} from "@ayush-tickets/common";
 import { createTicketRouter } from "./routes/new";
 
 
@@ -14,6 +14,8 @@ app.use(cookieSession({
     signed:false,
     secure:true
 }))
+
+app.use(currentUser);
 
 app.use(createTicketRouter);
 
